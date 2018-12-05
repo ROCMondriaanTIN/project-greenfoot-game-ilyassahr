@@ -12,6 +12,10 @@ public class Mover extends Actor {
     public double velocityX;
     public double velocityY;
     protected Camera camera;
+    private Vector movement = new Vector();
+    
+    private double x = 0;
+    private double y = 0;
 
     private int worldX;
     private int worldY;
@@ -27,7 +31,43 @@ public class Mover extends Actor {
         this.camera = camera;
         hasCamera = true;
     }
+    public void move() 
+    {
+        x = x + movement.getX();
+        y = y + movement.getY();
+        if(x >= getWorld().getWidth()) {
+            x = 0;
+        }
+        if(x < 0) {
+            x = getWorld().getWidth() - 1;
+        }
+        if(y >= getWorld().getHeight()) {
+            y = 0;
+        }
+        if(y < 0) {
+            y = getWorld().getHeight() - 1;
+        }
+        setLocation(x, y);
+    }
+    public Vector getMovement() 
+    {
+        return movement;
+    }
+public boolean atWorldEdge()
+    {
+        if(getX() < 0) {
+            setLocation(0, getY());
+            return true;
+        }
+        if(getX() > TileEngine.MAP_WIDTH * TileEngine.TILE_WIDTH){
+            setLocation(TileEngine.MAP_WIDTH * TileEngine.TILE_WIDTH , getY());
+            return true;
+        }
+        else
+            return false;
+    }
 
+    
     /**
      * Removes the camera if a camera has been set
      */
@@ -62,7 +102,12 @@ public class Mover extends Actor {
         this.worldX = x;
         this.worldY = y;
     }
-
+    public void setLocation(double x, double y) 
+    {
+        this.x = x;
+        this.y = y;
+        super.setLocation((int) x, (int) y);
+    }
     @Override
     public int getX() {
         return this.worldX;

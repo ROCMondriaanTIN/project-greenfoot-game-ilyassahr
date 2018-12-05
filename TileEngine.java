@@ -14,6 +14,7 @@ public class TileEngine {
     public static int SCREEN_WIDTH;
     public static int MAP_WIDTH;
     public static int MAP_HEIGHT;
+    public static boolean isSolid = true;
 
     private World world;
     private int[][] map;
@@ -175,6 +176,7 @@ public class TileEngine {
         if (tile != null && tile.isSolid) {
             return true;
         }
+        
         return false;
     }
 

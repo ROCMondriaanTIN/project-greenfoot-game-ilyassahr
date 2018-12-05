@@ -7,7 +7,7 @@ import greenfoot.*;
  */
 public class Tile extends Actor {
 
-    public boolean isSolid = false;
+    public boolean isSolid;
     private static int id;
     public int _id;
 
@@ -27,6 +27,7 @@ public class Tile extends Actor {
         }
         _id = id;
         id++;
+        
     }
 
     @Override

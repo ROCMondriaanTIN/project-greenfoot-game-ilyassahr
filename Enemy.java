@@ -26,7 +26,14 @@ public class Enemy extends Mover {
     public void act() {
         int x = getX();
         int y = getY();
-
+        
+        for (Actor f : getIntersectingObjects(Fireball.class)) {
+            if (f != null) {
+                getWorld().removeObject(this);
+                
+                break;
+            }
+        }
         if (firstAct) {
             firstAct = false;
             xMin = x - walkRange / 2;

@@ -34,10 +34,7 @@ public class Fireball extends Mover
         // Add your action code here.
         move();
         
-        for (Actor enemy2 : getIntersectingObjects(Enemy2.class)) {                
-                getWorld().removeObject(enemy2);
-                break;            
-        }    
+           
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {            
                 if(enemy != null)
                 {
@@ -45,7 +42,10 @@ public class Fireball extends Mover
                 break; 
             }
         }
-        
+        for (Actor enemy2 : getIntersectingObjects(Enemy2.class)) {                
+                getWorld().removeObject(enemy2);
+                break;            
+        } 
         width = getImage().getWidth() / 2;
         
         Tile tile = (Tile) getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Tile.class);

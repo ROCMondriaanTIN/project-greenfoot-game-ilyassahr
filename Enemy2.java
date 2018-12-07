@@ -32,7 +32,14 @@ public class Enemy2 extends Mover {
             xMin = x - walkRange / 2;
             xMax = x + walkRange / 2;
         }
-
+        for (Actor f : getIntersectingObjects(Fireball.class)) {
+            if (f != null) {
+                getWorld().removeObject(this);
+                
+                
+                break;
+            }
+        }
         velocityX = speed;
         applyVelocity();
         if (getX() >= xMax) {

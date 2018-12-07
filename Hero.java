@@ -1,6 +1,6 @@
         
         import greenfoot.*;
-        
+        import java.util.List;
         /**
         *
         * @author R. Springer
@@ -22,6 +22,7 @@
         public static int player = 3;
         int status = 0;
         
+        
         private GreenfootImage walk1w = new GreenfootImage("p" + player + "_walk1.png");
         private GreenfootImage walk2w = new GreenfootImage("p" + player + "_walk2.png");
         private GreenfootImage walk3w = new GreenfootImage("p" + player + "_walk3.png");
@@ -37,6 +38,7 @@
         eindScherm eindscherm = new eindScherm();
         public Hero() {
         super();
+        
         gunReloadTime = 5;
         reloadDelayCount = 0;
         gravity = 10.0;
@@ -139,21 +141,7 @@
             
         }
         }
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
-                getWorld().removeObject(this);
-                Lifes.lifes -= 1;
-                if(Lifes.lifes <= 0)
-                {
-                    Greenfoot.setWorld(new MyWorld());
-                }
-                else
-                {
-                    Greenfoot.setWorld(new MyWorld2());
-                }
-                break;
-            }
-        }
+        
         for (Actor enemy2 : getIntersectingObjects(Enemy2.class)) {
             if (enemy2 != null) {
                 getWorld().removeObject(this);
@@ -169,6 +157,23 @@
                 break;
             }
         }
+        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
+            if (enemy != null) {
+                getWorld().removeObject(this);
+                Lifes.lifes -= 1;
+                if(Lifes.lifes <= 0)
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+                else
+                {
+                    Greenfoot.setWorld(new MyWorld2());
+                }
+                break;
+            }
+        }
+        
+        
         }
         private void checkCollision() 
         {

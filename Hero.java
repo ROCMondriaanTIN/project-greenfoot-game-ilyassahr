@@ -8,7 +8,7 @@
         public class Hero extends Mover {
         
         private int gunReloadTime;              // The minimum delay between firing the gun.
-        private int reloadDelayCount;           // How long ago we fired the gun the last time.
+        private double reloadDelayCount;           // How long ago we fired the gun the last time.
         private Vector acceleration;            // A vector used to accelerate when using booster.
         private int shotsFired; 
         private final double gravity;
@@ -172,11 +172,7 @@
         }
         private void checkCollision() 
         {
-        Enemy a = (Enemy) getOneIntersectingObject(Enemy.class);
-        if (a != null) {
-            getWorld().removeObject(a);
-            getWorld().removeObject(this);
-        }
+        
         }
         public void handleInput() 
         {
@@ -236,9 +232,13 @@
             getWorld().addObject(f, this.getX(), this.getY());
             f.move();
             shotsFired++;
-            reloadDelayCount = 0;   // time since last shot fired
+            reloadDelayCount = -15;   // time since last shot fired
+            if(velocityX < 0)
+            {
+                f.velocityX = -15;
+            }
         }
-    }
+        }
     
     public void animationWalk(int width, int heigth, boolean right) {
 

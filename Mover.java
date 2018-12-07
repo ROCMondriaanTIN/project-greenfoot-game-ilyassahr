@@ -53,6 +53,10 @@ public class Mover extends Actor {
     {
         return movement;
     }
+    public void increaseSpeed(Vector s) 
+    {
+        movement.add(s);
+    }
 public boolean atWorldEdge()
     {
         if(getX() < 0) {

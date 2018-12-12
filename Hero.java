@@ -141,6 +141,21 @@
             
         }
         }
+        for (Actor l : getIntersectingObjects(lift.class)) {
+            if (l != null) {
+                getWorld().removeObject(this);
+                Lifes.lifes -= 1;
+                if(Lifes.lifes <= 0)
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+                else
+                {
+                    Greenfoot.setWorld(new MyWorld2());
+                }
+                break;
+            }
+        }
         
         for (Actor enemy2 : getIntersectingObjects(Enemy2.class)) {
             if (enemy2 != null) {

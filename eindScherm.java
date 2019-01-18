@@ -14,6 +14,6 @@ public class eindScherm extends Actor
      */
     public void act() 
     {
-        setImage(new GreenfootImage("Beste", 48, Color.WHITE, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("BESTE", 48, Color.BLACK, new Color(0,0,0,0)));
     }    
 }

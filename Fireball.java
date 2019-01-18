@@ -36,14 +36,16 @@ public class Fireball extends Mover
         
            
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {            
-                if(enemy != null)
-                {
+                
+                
                 getWorld().removeObject(enemy);
+                Counter.score += 100;
                 break; 
-            }
+            
         }
         for (Actor enemy2 : getIntersectingObjects(Enemy2.class)) {                
                 getWorld().removeObject(enemy2);
+                Counter.score += 100;
                 break;            
         } 
         width = getImage().getWidth() / 2;

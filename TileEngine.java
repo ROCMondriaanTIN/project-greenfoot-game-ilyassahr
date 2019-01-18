@@ -219,7 +219,7 @@ public class TileEngine {
     }
 
     /**
-     * This methode checks if a tile on a x and y position in the world is solid
+     * This methode checks if a tile on a x and y position in the world is solid 
      * or not.
      *
      * @param x X-position in the world

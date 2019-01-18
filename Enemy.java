@@ -30,7 +30,7 @@ public class Enemy extends Mover {
         for (Actor f : getIntersectingObjects(Fireball.class)) {
             if (f != null) {
                 getWorld().removeObject(this);
-                
+                Counter.score += 25;
                 break;
             }
         }

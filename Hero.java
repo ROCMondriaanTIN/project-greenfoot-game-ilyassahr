@@ -19,7 +19,7 @@
         private boolean kijktNaarLinks;
         private int walkStatus;
         private int width;
-        public static int player = 3;
+        public static int player = 1;
         int status = 0;
         
         
@@ -127,6 +127,84 @@
         
             }
         }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile) actor;
+            if (tile.getImage().toString().contains("letterB")) {
+                getWorld().removeObject(tile);
+                keyCollect = true;
+                
+                return;
+        
+            }
+        }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile) actor;
+            if (tile.getImage().toString().contains("letterE")) {
+                getWorld().removeObject(tile);
+                keyCollect = true;
+                
+                return;
+        
+            }
+        }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile) actor;
+            if (tile.getImage().toString().contains("letterS")) {
+                getWorld().removeObject(tile);
+                keyCollect = true;
+                
+                return;
+        
+            }
+        }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile) actor;
+            if (tile.getImage().toString().contains("letterT")) {
+                getWorld().removeObject(tile);
+                keyCollect = true;
+                
+                return;
+        
+            }
+        }
+        for (Actor tot : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile)tot;
+            if (tile.getImage().toString().contains("liquidWaterTop_mid")) {
+                
+                
+                Lifes.lifes -= 1;
+                if(Lifes.lifes <= 0)
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+                else
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+                getWorld().removeObject(this);
+                break;
+            
+            }
+        }
+        for (Actor tot : getIntersectingObjects(Tile.class)) {
+            Tile tile = (Tile)tot;
+            if (tile.getImage().toString().contains("liquidLavaTop_mid")) {
+                
+                
+                Lifes.lifes -= 1;
+                if(Lifes.lifes <= 0)
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+                else
+                {
+                    Greenfoot.setWorld(new MyWorld4());
+                }
+                getWorld().removeObject(this);
+                break;
+            
+            }
+        }
         for (Actor teleporter : getIntersectingObjects(teleporter.class)){
         if(teleporter != null)
         {
@@ -223,9 +301,10 @@
         
         
         if (Greenfoot.isKeyDown("w")) {
-
-            velocityY = -13;
+            if(isOnGround){
+            velocityY = -16;
             animationJump(getWidth(), getHeight());
+        }
         } 
         else if (Greenfoot.isKeyDown("s")) 
         {

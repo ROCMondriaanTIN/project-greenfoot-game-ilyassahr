@@ -20,7 +20,7 @@ public class Counter extends Actor
         if(Counter.score == 200)
         {
             Greenfoot.setWorld(new MyWorld2());
-            score += 1;
+            
         }
         
     }    
